@@ -29,6 +29,7 @@ namespace todoAPI.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
+            Console.Write(value);
         }
 
         // PUT api/values/5
