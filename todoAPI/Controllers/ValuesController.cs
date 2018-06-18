@@ -8,14 +8,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace todoAPI.Controllers
 {
+    public class ToDo
+    {
+        public int ID { get; set; }
+        public string Text { get; set; }
+        public int Priority { get; set; }
+        public bool Completed { get; set; }
+
+        public ToDo(int id, string text, int priority, bool completed)
+        {
+            ID = id;
+            Text = text;
+            Priority = priority;
+            Completed = completed;
+        }
+    }
+
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase
     {
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ToDo[] Get()
         {
-            return new string[] { "value1", "value2" };
+            return new ToDo[] { };
         }
 
         // GET api/values/5
@@ -26,7 +42,7 @@ namespace todoAPI.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost("{id, text, priority, completed}")]
         public void Post([FromBody]string value)
         {
             Console.Write(value);
